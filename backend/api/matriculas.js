@@ -31,7 +31,16 @@ module.exports = async (req, res) => {
     } catch (error) {
       return res.status(500).json({ message: `Erro ao salvar matrícula: ${error.message}` });
     }
-  } else {
+  }  else if (req.method === 'GET') {
+    try {
+      const matriculas = await Matricula.find();
+      return res.status(200).json(matriculas);
+    } catch (error) {
+      return res.status(500).json({ message: `Erro ao buscar matrículas: ${error.message}` });
+    }
+  } 
+  
+  else {
     return res.status(405).json({ message: 'Método não permitido' });
   }
 };

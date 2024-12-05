@@ -7,6 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());
+app.options('*', cors());
 app.use(express.json());
 
 mongoose.connect("mongodb+srv://admin:admin@cluster0.fkldq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
